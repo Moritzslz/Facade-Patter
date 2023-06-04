@@ -1,9 +1,6 @@
 package de.tum.in.ase.eist.store;
 
-import de.tum.in.ase.eist.ecommerce.AdvertisementController;
-import de.tum.in.ase.eist.ecommerce.Order;
-import de.tum.in.ase.eist.ecommerce.OrderController;
-import de.tum.in.ase.eist.ecommerce.ShippingController;
+import de.tum.in.ase.eist.ecommerce.*;
 
 // TODO 6 Remove all associations to the different controllers and use the facade instead.
 public class Cinema {
@@ -15,6 +12,7 @@ public class Cinema {
 	private final OrderController orderController;
 	private final ShippingController shippingController;
 	private final AdvertisementController advertisementController;
+	private final ECommerceFacade ecf;
 
 	public Cinema(String address, String name) {
 		this.address = address;
@@ -23,6 +21,7 @@ public class Cinema {
 		this.orderController = new OrderController();
 		this.shippingController = new ShippingController();
 		this.advertisementController = new AdvertisementController();
+		this.ecf = new ECommerceFacade(orderController, advertisementController, shippingController);
 	}
 
 	public void startLiveStream(int ageRestriction) {
@@ -39,14 +38,13 @@ public class Cinema {
 	}
 
 	public void advertise(int ageRestriction) {
-		advertisementController.playAdvertisement(ageRestriction);
+		ecf.playAdvertisement(ageRestriction);
 	}
 
 	public void deliverPopcorn(String shippingAddress) {
-		Order order = orderController.retrieveLatestOrder(id);
-		orderController.processOrder(order);
-		order.setShipping(shippingController.createShipping(shippingAddress));
-		shippingController.shipOrder(order);
+		Order order = ecf.retrieveLatestOrder(id);
+		ecf.processOrder(order);
+		ecf.shipOrder(order, shippingAddress);
 	}
 
 	@Override

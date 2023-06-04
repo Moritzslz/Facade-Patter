@@ -1,5 +1,6 @@
 package de.tum.in.ase.eist.store;
 
+import de.tum.in.ase.eist.ecommerce.ECommerceFacade;
 import de.tum.in.ase.eist.ecommerce.Order;
 import de.tum.in.ase.eist.ecommerce.OrderController;
 import de.tum.in.ase.eist.ecommerce.ShippingController;
