@@ -2,8 +2,7 @@ package de.tum.in.ase.eist.store;
 
 import de.tum.in.ase.eist.ecommerce.ECommerceFacade;
 import de.tum.in.ase.eist.ecommerce.Order;
-import de.tum.in.ase.eist.ecommerce.OrderController;
-import de.tum.in.ase.eist.ecommerce.ShippingController;
+
 
 // TODO 5 Remove all associations to the different controllers and use the facade instead.
 public class BookStore {

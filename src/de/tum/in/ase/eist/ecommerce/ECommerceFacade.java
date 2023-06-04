@@ -5,29 +5,29 @@ public class ECommerceFacade {
     private OrderController orderController;
     private AdvertisementController advertisementController;
     private ShippingController shippingController;
-    public ECommerceFacade(){
+    public ECommerceFacade() {
         this.orderController =  new OrderController();
         this.advertisementController = new AdvertisementController();
         this.shippingController = new ShippingController();
     }
 
-    public void processOrder(Order order){
+    public void processOrder(Order order) {
         orderController.processOrder(order);
     }
 
-    public void processOrder(Order order, String phoneNumber){
+    public void processOrder(Order order, String phoneNumber) {
         orderController.processOrder(order, phoneNumber);
     }
 
-    public Order retrieveLatestOrder(int id){
+    public Order retrieveLatestOrder(int id) {
         return  orderController.retrieveLatestOrder(id);
     }
 
-    public void playAdvertisement(int ageRestriction){
+    public void playAdvertisement(int ageRestriction) {
         advertisementController.playAdvertisement(ageRestriction);
     }
 
-    public void shipOrder(Order order, String address){
+    public void shipOrder(Order order, String address) {
         order.setShipping(shippingController.createShipping(address));
         shippingController.shipOrder(order);
     }
