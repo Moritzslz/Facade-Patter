@@ -9,19 +9,13 @@ public class Cinema {
 	private final String address;
 	private final String name;
 	private final int id;
-	private final OrderController orderController;
-	private final ShippingController shippingController;
-	private final AdvertisementController advertisementController;
 	private final ECommerceFacade ecf;
 
 	public Cinema(String address, String name) {
 		this.address = address;
 		this.name = name;
 		this.id = generateCinemaId();
-		this.orderController = new OrderController();
-		this.shippingController = new ShippingController();
-		this.advertisementController = new AdvertisementController();
-		this.ecf = new ECommerceFacade(orderController, advertisementController, shippingController);
+		this.ecf = new ECommerceFacade();
 	}
 
 	public void startLiveStream(int ageRestriction) {

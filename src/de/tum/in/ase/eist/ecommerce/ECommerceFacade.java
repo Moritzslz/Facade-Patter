@@ -5,10 +5,10 @@ public class ECommerceFacade {
     private OrderController oc;
     private AdvertisementController ac;
     private ShippingController sc;
-    public ECommerceFacade(OrderController oc, AdvertisementController ac, ShippingController sc){
-        this.oc = oc;
-        this.ac = ac;
-        this.sc = sc;
+    public ECommerceFacade(){
+        this.oc = new OrderController();
+        this.ac = new AdvertisementController();
+        this.sc = new ShippingController();
     }
 
     public void processOrder(Order order){
