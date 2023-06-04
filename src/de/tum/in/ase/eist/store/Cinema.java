@@ -9,13 +9,13 @@ public class Cinema {
 	private final String address;
 	private final String name;
 	private final int id;
-	private final ECommerceFacade ecf;
+	private final ECommerceFacade eCommerceFacade;
 
 	public Cinema(String address, String name) {
 		this.address = address;
 		this.name = name;
 		this.id = generateCinemaId();
-		this.ecf = new ECommerceFacade();
+		this.eCommerceFacade = new ECommerceFacade();
 	}
 
 	public void startLiveStream(int ageRestriction) {
@@ -32,13 +32,13 @@ public class Cinema {
 	}
 
 	public void advertise(int ageRestriction) {
-		ecf.playAdvertisement(ageRestriction);
+		eCommerceFacade.playAdvertisement(ageRestriction);
 	}
 
 	public void deliverPopcorn(String shippingAddress) {
-		Order order = ecf.retrieveLatestOrder(id);
-		ecf.processOrder(order);
-		ecf.shipOrder(order, shippingAddress);
+		Order order = eCommerceFacade.retrieveLatestOrder(id);
+		eCommerceFacade.processOrder(order);
+		eCommerceFacade.shipOrder(order, shippingAddress);
 	}
 
 	@Override

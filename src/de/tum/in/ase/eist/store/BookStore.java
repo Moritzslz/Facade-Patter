@@ -12,20 +12,20 @@ public class BookStore {
 	private final String address;
 	private final String name;
 	private final int id;
-	private final ECommerceFacade ecf;
+	private final ECommerceFacade eCommerceFacade;
 
 	public BookStore(String address, String name) {
 		this.address = address;
 		this.name = name;
 		this.id = generateBookStoreId();
-		this.ecf = new ECommerceFacade();
+		this.eCommerceFacade = new ECommerceFacade();
 	}
 
 	public void acceptOrder(String shippingAddress, String phoneNumber) {
 		System.out.println("Accepting shipping order.");
-		Order order = ecf.retrieveLatestOrder(id);
-		ecf.processOrder(order, phoneNumber);
-		ecf.shipOrder(order, shippingAddress);
+		Order order = eCommerceFacade.retrieveLatestOrder(id);
+		eCommerceFacade.processOrder(order, phoneNumber);
+		eCommerceFacade.shipOrder(order, shippingAddress);
 	}
 
 	public String getAddress() {
